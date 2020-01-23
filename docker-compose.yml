@@ -130,8 +130,10 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "bugspring.test:0.0.0.0"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
+        - 8080:8080
       tty: true
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}

@@ -1,0 +1,11 @@
+#!/bin/bash
+cd ..
+
+docker-compose exec -u laradock workspace bash -c 'cd /var/www/BugSpring&&php artisan migrate:fresh'
+docker-compose exec -u laradock workspace bash -c 'cd /var/www/BugSpring&&php artisan passport:install'
+docker-compose exec -u laradock workspace bash -c 'cd /var/www/BugSpring&&php artisan db:seed'
+
+for seeder in "$@"
+do
+   docker-compose exec -u laradock workspace bash -c "cd /var/www/BugSpring&&php artisan db:seed --class=$seeder"
+done
