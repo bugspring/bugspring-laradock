@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ..
+
+docker-compose exec -u laradock workspace bash -c 'cd /var/www/BugSpring&&vendor/bin/phpunit $@' 0 $@
