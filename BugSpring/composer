@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ..
+docker-compose exec -u laradock workspace bash -c 'cd /var/www/BugSpring&&composer $@' 0 $@
